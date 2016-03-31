@@ -30,7 +30,7 @@ WorkbookRails::FORMATS.each do |format|
     options[:locals] ||= {}
     options[:locals][:format] ||= format
 
-    send_data render_to_string(options), :filename => file_name, :type => Mime::XLSX, :disposition => disposition
+    send_data render_to_string(options), :filename => file_name, :type => Mime::Type.lookup_by_extension(format), :disposition => disposition
   end
 end
 
