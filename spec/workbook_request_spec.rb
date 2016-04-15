@@ -114,17 +114,10 @@ describe 'Workbook request', :type => :request do
       Capybara::RackTest::Driver.new(app, headers: { 'HTTP_ACCEPT' => '*/*' })
     end
 
-    def puts_def_formats(title)
-      puts "default formats #{title.ljust(30)}: #{ActionView::Base.default_formats}"
-    end
-
     it "mime all with render :xlsx and then :html" do
-      # puts_def_formats 'before'
       ActionView::Base.default_formats.delete :xlsx # see notes
-      # puts_def_formats 'in my project'
       Capybara.current_driver = :mime_all
       visit '/another'
-      # puts_def_formats 'after render xlsx with */*'
       expect{ visit '/home/only_html' }.to_not raise_error
 
       # Output:
