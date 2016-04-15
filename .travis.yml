@@ -11,6 +11,6 @@ rvm:
   - 2.0
   - 2.1
   - 2.2
-  - 2.3
+  - 2.3.0
 before_script:
   "cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../.."
