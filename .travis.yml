@@ -12,5 +12,5 @@ rvm:
   - 2.1
   - 2.2
   - 2.3
-script:
-  spec/ci.rb
+before_script:
+  "cd spec/dummy && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:create && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:migrate"
