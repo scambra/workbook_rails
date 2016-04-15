@@ -27,9 +27,7 @@ WorkbookRails::FORMATS.each do |format|
       file_name = "#{filename.gsub(/^.*\//,'')}.#{format}"
     end
 
-    options[:locals] ||= {}
-    options[:locals][:format] ||= format
-
+    options = options.merge(:formats => [format])
     send_data render_to_string(options), :filename => file_name, :type => Mime::Type.lookup_by_extension(format), :disposition => disposition
   end
 end

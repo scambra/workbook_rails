@@ -1,0 +1,2 @@
+wb.sheet.name = "Cover Sheet"
+wb.sheet.table << ['Cover', 'Sheet']

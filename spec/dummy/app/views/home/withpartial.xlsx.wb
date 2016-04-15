@@ -1,0 +1,6 @@
+render :partial => 'cover_sheet', :locals => {:wb => workbook}
+workbook << [['Bad', 'spellers', 'of', 'the', 'world', '...'], ['Untie!']]
+sheet = workbook.last
+sheet.name = 'Foobar'
+sheet.table['A2'].rowspan = 2
+sheet.table['A2'].format = {width: 16, font_weight: 'bold'}

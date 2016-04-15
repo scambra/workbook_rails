@@ -13,16 +13,15 @@ Gem::Specification.new do |s|
   s.summary     = "A simple rails plugin to provide an spreadsheet renderer using the workbook gem."
   s.description = "Workbook_Rails provides a Workbook renderer so you can move all your spreadsheet code from your controller into view files. Partials are supported so you can organize any code into reusable chunks (e.g. cover sheets, common styling, etc.) Now you can keep your controllers thin!"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + Dir['[A-Z]*'] - ['Guardfile']
-  s.test_files = Dir["spec/**/*"] + ['Guardfile']
+  s.files = Dir["{app,config,db,lib}/**/*"] + Dir['[A-Z]*']
+  s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "actionpack", ">= 3.1"
+  s.add_dependency "actionpack", ">= 3.2"
   s.add_dependency "workbook", ">= 0.4.10"
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails"
-  s.add_development_dependency "guard-rspec"
   s.add_development_dependency "capybara"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "growl"

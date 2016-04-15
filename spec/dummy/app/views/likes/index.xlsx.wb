@@ -1,0 +1,5 @@
+workbook.sheet.name = "Foobar"
+workbook.sheet.table.push [@user.name]
+@likes.each do |like|
+  workbook.sheet.table << [like.name]
+end

@@ -1,0 +1,3 @@
+workbook.sheet.name = 'Instructions'
+workbook.sheet.table << [@user.id, @user.name, @user.email]
+workbook.sheet.table << ['', 'Instructions', '']

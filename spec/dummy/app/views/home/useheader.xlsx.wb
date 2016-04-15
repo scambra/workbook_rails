@@ -1,0 +1,5 @@
+workbook.sheet.name = "Useheader"
+workbook.sheet.table.push ['Bad', 'spellers', 'of', 'the', 'world', '...']
+workbook.sheet.table.push ['Untie!']
+workbook.sheet.table['A2'].rowspan = 2
+workbook.sheet.table['A2'].format = {width: 16, font_weight: 'bold'}
