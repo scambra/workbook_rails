@@ -3,7 +3,7 @@ sudo: false
 cache: bundler
 language: ruby
 gemfile:
-  - ../../Gemfile
+  - Gemfile
   - gemfiles/Gemfile-3.2
   - gemfiles/Gemfile-4.0
   - gemfiles/Gemfile-4.1
