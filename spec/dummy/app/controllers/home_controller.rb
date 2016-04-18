@@ -8,9 +8,13 @@
 #---
 class HomeController < ApplicationController
   def index
+  end
+
+  def generic
     respond_to do |format|
       format.html
       format.xlsx
+      format.xls
     end
   end
 

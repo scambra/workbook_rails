@@ -78,6 +78,19 @@ render xlsx: 'buttons'
 render xlsx: 'latest_buttons', template: 'featured/latest'
 ```
 
+###Multi-format Templates
+
+You can create a template with `.wb` extension, without format, and use for generating different spreadsheets formats, such as xls and xlsx, using respond_to and format param.
+
+Set :format param in the route (/route_path.xlsx, or /route_path.xls) and use respond_to in the controller
+
+```ruby
+respond_to do |format|
+  format.xlsx
+  format.xls
+end
+```
+
 ###Disposition
 
 To specify a disposition (such as `inline` so the spreadsheet is opened inside the browser), use the `disposition` option:

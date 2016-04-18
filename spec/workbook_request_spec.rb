@@ -1,12 +1,6 @@
 require 'spec_helper'
 describe 'Workbook request', :type => :request do
 
-  after(:each) do
-    if File.exists? '/tmp/workbook_temp.xlsx'
-      File.unlink '/tmp/workbook_temp.xlsx'
-    end
-  end
-
   it "has a working dummy app" do
     @user1 = User.create name: 'Elmer', last_name: 'Fudd', address: '1234 Somewhere, Over NY 11111', email: 'elmer@fudd.com'
     visit '/'
@@ -18,6 +12,30 @@ describe 'Workbook request', :type => :request do
 
     expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page)
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
+  end
+
+  it "downloads an xls file from default respond_to" do
+    visit '/home.xls'
+
+    expect(page.response_headers['Content-Type']).to eq(Mime::XLS.to_s + "; charset=utf-8")
+    wb = write_and_open_workbook(page, 'xls')
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
+  end
+
+  it "downloads an excel file from params format" do
+    visit '/home/generic.xlsx'
+
+    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    wb = write_and_open_workbook(page)
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
+  end
+
+  it "downloads an xls file from params format" do
+    visit '/home/generic.xls'
+
+    expect(page.response_headers['Content-Type']).to eq(Mime::XLS.to_s + "; charset=utf-8")
+    wb = write_and_open_workbook(page, 'xls')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
 
@@ -139,10 +157,12 @@ describe 'Workbook request', :type => :request do
   end
 
   protected
-  def write_and_open_workbook(page)
-    File.open('/tmp/workbook_temp.xlsx', 'w') {|f| f.write(page.source) }
+  def write_and_open_workbook(page, extension = 'xlsx')
+    file = "/tmp/workbook_temp.#{extension}"
+    File.open(file, 'wb') {|f| f.write(page.source) }
     wb = nil
-    expect{ wb = Workbook::Book.open('/tmp/workbook_temp.xlsx') }.to_not raise_error
+    expect{ wb = Workbook::Book.open(file) }.to_not raise_error
+    File.unlink file
     wb
   end
 end
