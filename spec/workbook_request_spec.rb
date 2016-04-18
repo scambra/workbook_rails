@@ -59,6 +59,13 @@ describe 'Workbook request', :type => :request do
     expect(wb[1].table[1][0]).to eq("Untie!")
   end
 
+  it "downloads an excel from render with file path" do
+    visit '/render_file_path.xlsx'
+    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s)
+    wb = write_and_open_workbook(page)
+    expect(wb.sheet.table[1][0]).to eq('User!')
+  end
+
   it "handles nested resources" do
     User.destroy_all
     @user = User.create name: 'Bugs', last_name: 'Bunny', address: '1234 Left Turn, Albuquerque NM 22222', email: 'bugs@bunny.com'
@@ -80,7 +87,7 @@ describe 'Workbook request', :type => :request do
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[1][0]).to eq('User!')
 
-    [[1,false],[3,true],[4,true],[5,false]].reverse.each do |s|
+    [[1,false], [2,false], [3,true], [4,true], [5,false]].reverse.each do |s|
       visit "/home/render_elsewhere.xlsx?type=#{s[0]}"
       expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s +
         (s[1] ? "; charset=utf-8" : ''))

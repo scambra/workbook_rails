@@ -36,7 +36,7 @@ class HomeController < ApplicationController
   end
 
   def render_file_path
-    render :xlsx => Rails.root.join('app','views','users','respond_with')
+    render :xlsx => 'index', :file => Rails.root.join('app','views','users','respond_with')
   end
 
   def withpartial
