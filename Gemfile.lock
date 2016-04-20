@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    workbook_rails (0.1.0)
+    workbook_rails (0.1.1)
       actionpack (>= 3.2)
       workbook (>= 0.4.10)
 
