@@ -5,6 +5,7 @@ module WorkbookRails
 
     def self.workbook_to_string(workbook, format)
       case format
+      when :csv then workbook.sheet.table.to_csv
       when :xlsx then workbook.stream_xlsx
       when :xls then
         io = StringIO.new

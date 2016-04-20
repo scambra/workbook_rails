@@ -15,6 +15,7 @@ class HomeController < ApplicationController
       format.html
       format.xlsx
       format.xls
+      format.csv
     end
   end
 

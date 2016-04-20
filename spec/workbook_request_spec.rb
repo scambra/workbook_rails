@@ -23,6 +23,14 @@ describe 'Workbook request', :type => :request do
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
 
+  it "downloads an csv file from default respond_to" do
+    visit '/home.csv'
+
+    expect(page.response_headers['Content-Type']).to eq(Mime::CSV.to_s + "; charset=utf-8")
+    wb = write_and_open_workbook(page, 'csv')
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
+  end
+
   it "downloads an excel file from params format" do
     visit '/home/generic.xlsx'
 
@@ -36,6 +44,14 @@ describe 'Workbook request', :type => :request do
 
     expect(page.response_headers['Content-Type']).to eq(Mime::XLS.to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page, 'xls')
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
+  end
+
+  it "downloads an csv file from params format" do
+    visit '/home/generic.csv'
+
+    expect(page.response_headers['Content-Type']).to eq(Mime::CSV.to_s + "; charset=utf-8")
+    wb = write_and_open_workbook(page, 'csv')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
 
@@ -162,7 +178,7 @@ describe 'Workbook request', :type => :request do
     File.open(file, 'wb') {|f| f.write(page.source) }
     wb = nil
     expect{ wb = Workbook::Book.open(file) }.to_not raise_error
-    File.unlink file
+    #File.unlink file
     wb
   end
 end
