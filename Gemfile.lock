@@ -124,7 +124,7 @@ GEM
     rake (10.5.0)
     rb-fsevent (0.9.7)
     rchardet (1.6.1)
-    responders (2.2.0)
+    responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     roo (2.3.2)
       nokogiri (~> 1)
@@ -201,4 +201,4 @@ DEPENDENCIES
   workbook_rails!
 
 BUNDLED WITH
-   1.12.4
+   1.12.5
