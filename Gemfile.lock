@@ -124,6 +124,8 @@ GEM
     rake (10.5.0)
     rb-fsevent (0.9.7)
     rchardet (1.6.1)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     roo (2.3.2)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -196,6 +198,7 @@ DEPENDENCIES
   rails (~> 5.0.0)
   rake
   rb-fsevent
+  responders (~> 2.0)
   rspec-rails
   sqlite3
   workbook_rails!
