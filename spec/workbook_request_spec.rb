@@ -10,7 +10,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an excel file from default respond_to" do
     visit '/home.xlsx'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -18,7 +18,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an xls file from default respond_to" do
     visit '/home.xls'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLS.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xls].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page, 'xls')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -26,7 +26,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an csv file from default respond_to" do
     visit '/home.csv'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::CSV.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:csv].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page, 'csv')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -34,7 +34,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an excel file from params format" do
     visit '/home/generic.xlsx'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -42,7 +42,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an xls file from params format" do
     visit '/home/generic.xls'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLS.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xls].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page, 'xls')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -50,7 +50,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an csv file from params format" do
     visit '/home/generic.csv'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::CSV.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:csv].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page, 'csv')
     expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
@@ -58,7 +58,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an excel file from respond_to while specifying filename" do
     visit '/useheader.xlsx'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s)
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s)
     expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
 
     wb = write_and_open_workbook(page)
@@ -68,7 +68,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an excel file from respond_to while specifying filename in direct format" do
     visit '/useheader.xlsx?set_direct=true'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s + "; charset=utf-8")
     expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
 
     wb = write_and_open_workbook(page)
@@ -78,7 +78,7 @@ describe 'Workbook request', :type => :request do
   it "downloads an excel file from render statement with filename" do
     visit '/another.xlsx'
 
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX)
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx])
     expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
 
     wb = write_and_open_workbook(page)
@@ -87,7 +87,7 @@ describe 'Workbook request', :type => :request do
 
   it "downloads an excel file with partial" do
     visit '/withpartial.xlsx'
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[0][0]).to eq('Cover')
     expect(wb[1].table[1][0]).to eq("Untie!")
@@ -95,7 +95,7 @@ describe 'Workbook request', :type => :request do
 
   it "downloads an excel from render with file path" do
     visit '/render_file_path.xlsx'
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s)
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s)
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[1][0]).to eq('User!')
   end
@@ -106,7 +106,7 @@ describe 'Workbook request', :type => :request do
     @user.likes.create(:name => 'Carrots')
     @user.likes.create(:name => 'Celery')
     visit "/users/#{@user.id}/likes.xlsx"
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s + "; charset=utf-8")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s + "; charset=utf-8")
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[0][0]).to eq('Bugs')
     expect(wb.sheet.table[1][0]).to eq('Carrots')
@@ -117,13 +117,13 @@ describe 'Workbook request', :type => :request do
     User.destroy_all
     @user = User.create name: 'Bugs', last_name: 'Bunny', address: '1234 Left Turn, Albuquerque NM 22222', email: 'bugs@bunny.com'
     visit "/users/#{@user.id}/render_elsewhere.xlsx"
-    expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s)
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s)
     wb = write_and_open_workbook(page)
     expect(wb.sheet.table[1][0]).to eq('User!')
 
     [[1,false], [2,false], [3,true], [4,true], [5,false]].reverse.each do |s|
       visit "/home/render_elsewhere.xlsx?type=#{s[0]}"
-      expect(page.response_headers['Content-Type']).to eq(Mime::XLSX.to_s +
+      expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s +
         (s[1] ? "; charset=utf-8" : ''))
       wb = write_and_open_workbook(page)
       expect(wb.sheet.table[1][0]).to eq(s[0] == 5 ? 'Untie!' : 'User!')
@@ -142,7 +142,7 @@ describe 'Workbook request', :type => :request do
     it "handles missing format with render :xlsx" do
       visit '/another'
 
-      expect(page.response_headers['Content-Type']).to eq(Mime::XLSX)
+      expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx])
       expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
 
       wb = write_and_open_workbook(page)
