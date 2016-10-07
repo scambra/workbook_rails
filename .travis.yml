@@ -12,8 +12,9 @@ rvm:
   - 2.1
   - 2.2
   - 2.3.1
-exclude:
-  - rvm: 2.1
-    gemfile: Gemfile
+matrix:
+  exclude:
+    - rvm: 2.1
+      gemfile: Gemfile
 before_script:
   "cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../.."
