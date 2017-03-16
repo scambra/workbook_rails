@@ -21,7 +21,7 @@ WorkbookRails::FORMATS.each do |format|
 
     # disposition / filename
     disposition = options.delete(:disposition) || 'attachment'
-    if file_name = options.delete(:filename)
+    if (file_name = options.delete(:filename))
       file_name += ".#{format}" unless file_name =~ /\.#{format}$/
     else
       file_name = "#{filename.gsub(/^.*\//,'')}.#{format}"
