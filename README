@@ -8,6 +8,8 @@ Version](https://badge.fury.io/rb/workbook_rails.svg)](http://badge.fury.io/rb/w
 [![Dependency Status](https://gemnasium.com/Programatica/workbook_rails.png?branch=master)](https://gemnasium.com/Programatica/workbook_rails)
 [![Coverage
 Status](https://coveralls.io/repos/Programatica/workbook_rails/badge.png)](https://coveralls.io/r/Programatica/workbook_rails)
+[![Inline docs](https://inch-ci.org/github/Programatica/workbook_rails.svg?branch=master)](https://inch-ci.org/github/Programatica/workbook_rails)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
 ##Installation
