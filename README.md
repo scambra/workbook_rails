@@ -11,7 +11,7 @@ Status](https://coveralls.io/repos/Programatica/workbook_rails/badge.png)](https
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
-##Installation
+## Installation
 
 In your Gemfile:
 
@@ -19,21 +19,21 @@ In your Gemfile:
 gem 'workbook_rails'
 ```
 
-##Requirements
+## Requirements
 
 * Rails 3.2, 4.0, 4.1 or 4.2 (tested)
 * **Workbook 0.4.16 requires Axlsx 2.0.1, which requires rubyzip 1.0.0**
 * You must use `render_to_string` to render a mail attachment.
 
-##FYI
+## FYI
 
 * This gem depends on [Workbook](https://github.com/murb/workbook). See [README](https://github.com/murb/workbook) or [rdoc](http://www.rubydoc.info/github/murb/workbook) for usage.
 
-##Usage
+## Usage
 
 Workbook-Rails provides a renderer and a template handler. It adds the `:xlsx` and `:xls` formats and parses `.wb` templates. This lets you take all the [Workbook](https://github.com/murb/workbook) code out of your controller or model and place it inside the template, where view code belongs!
 
-###Controller
+### Controller
 
 To use Workbook-Rails set your instance variables in your controller and configure the response if needed:
 
@@ -48,7 +48,7 @@ class ButtonController < ApplicationController
 end
 ```
 
-###Template
+### Template
 
 Create the template with the `.xlsx.wb` extension (`action_name.xlsx.wb` for example.) [**Watch out for typos!**](#troubleshooting) In the template, use workbook variable to create your spreadsheet:
 
@@ -65,7 +65,7 @@ Remember, like in `erb` templates, view helpers are available to use the `.wb` t
 
 That's it. Call your action and your spreadsheet will be delivered.
 
-###Rendering Options
+### Rendering Options
 
 You can call render in any of the following ways:
 
@@ -80,7 +80,7 @@ render xlsx: 'buttons'
 render xlsx: 'latest_buttons', template: 'featured/latest'
 ```
 
-###Multi-format Templates
+### Multi-format Templates
 
 You can create a template with `.wb` extension, without format, and use for generating different spreadsheets formats, such as xls and xlsx, using respond_to and format param.
 
@@ -93,7 +93,7 @@ respond_to do |format|
 end
 ```
 
-###Disposition
+### Disposition
 
 To specify a disposition (such as `inline` so the spreadsheet is opened inside the browser), use the `disposition` option:
 
@@ -103,7 +103,7 @@ render xlsx: "buttons", disposition: 'inline'
 
 If `render xlsx:` is called, the disposition defaults to `attachment`.
 
-###File name
+### File name
 
 If Rails calls Workbook through default channels (because you use `format.xlsx {}` for example) you must set the filename using the response header:
 
@@ -128,7 +128,7 @@ If that fails, pass the `:filename` parameter:
 render xlsx: "action_or_template", filename: "my_new_filename.xlsx"
 ```
 
-###Partials
+### Partials
 
 Partials work as expected:
 
@@ -145,7 +145,7 @@ sheet.name = "Cover Sheet"
 sheet.table.push ['Cover', 'Sheet']
 ```
 
-###Mailers
+### Mailers
 
 To use an xlsx template to render a mail attachment, use the following syntax:
 
@@ -162,16 +162,16 @@ end
 * If the route specifies or suggests the `:xlsx` format you do not need to specify `formats` or `handlers`.
 * If the template (`users/export`) can refer to only one file (the xlsx.axlsx template), you do not need to specify `handlers`, provided the `formats` includes `:xlsx`.
 
-###Scripts
+### Scripts
 
 To generate a template within a script, you need to instantiate an ActionView context. Here are two gists showing how to perform this:
 
 * [Using rails runner](https://gist.github.com/straydogstudio/323139591f2cc5d48fbc)
 * [Without rails runner](https://gist.github.com/straydogstudio/dceb775ead81470cea70)
 
-##Troubleshooting
+## Troubleshooting
 
-###Mispellings
+### Mispellings
 
 **It is easy to get the spelling wrong in the extension name, the format.xlsx statement, or in a render call.** Here are some possibilities:
 
@@ -200,19 +200,19 @@ If the request format matches you should be able to call:
 
 This is a breaking change if you have the old syntax!
 
-###What to do
+### What to do
 
 If you are having problems, try to isolate the issue. Use the console or a script to make sure your data is good. Then create the spreadsheet line by line without Workbook-Rails to see if you are having Workbook problems. If you can manually create the spreadsheet, create an issue and we will work it out.
 
-##Dependencies
+## Dependencies
 
 - [Rails](https://github.com/rails/rails)
 - [Workbook](https://github.com/murb/workbook)
 
-##Authors
+## Authors
 
 * [Sergio Cambra](https://github.com/scambra)
 
-##Thanks
+## Thanks
 
 Many thanks to [straydogstudio](https://github.com/straydogstudio) for [axlsx_rails](https://github.com/straydogstudio/axlsx_rails), which this gem is based in.
