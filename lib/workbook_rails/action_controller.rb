@@ -33,10 +33,7 @@ WorkbookRails::FORMATS.each do |format|
 end
 
 # For respond_to default
-begin
-  ActionController::Responder
-rescue
-else
+if ActionController.const_defined? 'Responder'
   class ActionController::Responder
     WorkbookRails::FORMATS.each do |format|
       define_method "to_#{format}" do
