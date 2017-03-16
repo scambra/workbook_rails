@@ -12,7 +12,11 @@ gem 'responders', '~> 2.0'
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-gem 'capybara', '~> 2.1'
 
 # To use debugger
 # gem 'pry-debugger'
+group :test do
+  gem 'capybara', '~> 2.1'
+  gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', require: false
+end

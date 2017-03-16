@@ -18,3 +18,5 @@ matrix:
       gemfile: Gemfile
 before_script:
   "cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../.."
+after_success:
+  - bundle exec codeclimate-test-reporter
