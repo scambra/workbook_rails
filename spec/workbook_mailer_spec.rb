@@ -11,6 +11,6 @@ describe "Mailer", type: :request do
     expect(last_email.to).to eq([@user.email])
     expect(last_email.attachments.first).to be
     expect(last_email.attachments.first.body.to_s).not_to be_empty
-    expect(last_email.attachments.first.content_type).to eq(Mime::XLSX.to_s + (Rails.version < '4.0' ? '; charset=UTF-8' : ''))
+    expect(last_email.attachments.first.content_type).to eq(Mime[:xlsx].to_s + (Rails.version < '4.0' ? '; charset=UTF-8' : ''))
   end
 end

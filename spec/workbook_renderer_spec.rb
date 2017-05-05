@@ -8,21 +8,27 @@ describe 'Workbook renderer' do
   end
 
   it "has xlsx mime type" do
-    expect(Mime::XLSX).to be
-  	expect(Mime::XLSX.to_sym).to eq(:xlsx)
-    expect(Mime::XLSX.to_s).to eq("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    expect(get_mime(:xlsx)).to be
+    expect(get_mime(:xlsx).to_sym).to eq(:xlsx)
+    expect(get_mime(:xlsx).to_s).to eq("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
   end
 
   it "has xls mime type" do
-    expect(Mime::XLS).to be
-    expect(Mime::XLS.to_sym).to eq(:xls)
-    expect(Mime::XLS.to_s).to eq("application/vnd.ms-excel")
+    expect(get_mime(:xls)).to be
+    expect(get_mime(:xls).to_sym).to eq(:xls)
+    expect(get_mime(:xls).to_s).to eq("application/vnd.ms-excel")
   end
 
   it "has csv mime type" do
-    expect(Mime::CSV).to be
-    expect(Mime::CSV.to_sym).to eq(:csv)
-    expect(Mime::CSV.to_s).to eq("text/csv")
+    expect(get_mime(:csv)).to be
+    expect(get_mime(:csv).to_sym).to eq(:csv)
+    expect(get_mime(:csv).to_s).to eq("text/csv")
+  end
+
+  protected
+
+  def get_mime(extension)
+    Mime[extension]
   end
 
 end
