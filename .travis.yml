@@ -18,7 +18,7 @@ matrix:
     - rvm: 2.1
       gemfile: Gemfile
     - rvm: 2.1
-      gemfile: Gemfile-5.0
+      gemfile: gemfiles/Gemfile-5.0
 before_script:
   "cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../.."
 after_success:
