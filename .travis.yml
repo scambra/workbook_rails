@@ -8,6 +8,7 @@ gemfile:
   - gemfiles/Gemfile-4.0
   - gemfiles/Gemfile-4.1
   - gemfiles/Gemfile-4.2
+  - gemfiles/Gemfile-5.0
 rvm:
   - 2.1
   - 2.2.2
@@ -16,6 +17,8 @@ matrix:
   exclude:
     - rvm: 2.1
       gemfile: Gemfile
+    - rvm: 2.1
+      gemfile: Gemfile-5.0
 before_script:
   "cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../.."
 after_success:
