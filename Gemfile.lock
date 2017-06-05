@@ -87,11 +87,11 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitest (5.10.2)
     nio4r (2.0.0)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -207,4 +207,4 @@ DEPENDENCIES
   workbook_rails!
 
 BUNDLED WITH
-   1.15.0
+   1.15.1
