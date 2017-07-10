@@ -176,7 +176,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    workbook (0.7)
+    workbook (0.7.1)
       axlsx (~> 2.1.0.pre)
       json (~> 1.8)
       nokogiri (~> 1.6)
