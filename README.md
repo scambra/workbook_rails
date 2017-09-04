@@ -21,7 +21,7 @@ gem 'workbook_rails'
 
 ## Requirements
 
-* Rails 3.2, 4.0, 4.1 or 4.2 (tested)
+* Rails 3.2, 4.0, 4.1, 4.2 or 5.0 (tested)
 * **Workbook 0.4.16 requires Axlsx 2.0.1, which requires rubyzip 1.0.0**
 * You must use `render_to_string` to render a mail attachment.
 
