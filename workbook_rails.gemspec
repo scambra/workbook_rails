@@ -27,6 +27,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "growl"
   s.add_development_dependency "rb-fsevent"
   s.add_development_dependency "coveralls"
-  s.add_development_dependency "pry"
-  s.add_development_dependency "pry-nav"
 end

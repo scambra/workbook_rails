@@ -13,7 +13,6 @@ require 'bundler/setup'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'workbook_rails'
-require 'pry'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
