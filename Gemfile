@@ -19,4 +19,7 @@ group :test do
   gem 'capybara', '~> 2.1'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: false
+  gem "rspec-rails"
+  gem "sqlite3"
+  gem "coveralls"
 end

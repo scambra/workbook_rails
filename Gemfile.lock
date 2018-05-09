@@ -76,7 +76,6 @@ GEM
     erubi (1.7.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    growl (1.0.3)
     htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -122,7 +121,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.1)
-    rb-fsevent (0.10.3)
     rchardet (1.7.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -188,10 +186,8 @@ DEPENDENCIES
   capybara (~> 2.1)
   codeclimate-test-reporter
   coveralls
-  growl
   rails (~> 5.1.0)
   rake
-  rb-fsevent
   responders (~> 2.0)
   rspec-rails
   simplecov
