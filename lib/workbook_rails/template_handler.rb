@@ -9,7 +9,8 @@ module WorkbookRails
       when :xlsx then workbook.stream_xlsx
       when :xls then
         io = StringIO.new
-        workbook.to_xls.write(io)
+        xls = workbook.is_a?(Spreadsheet::Workbook) ? workbook : workbook.to_xls
+        xls.write(io)
         io.string
       end
     end
