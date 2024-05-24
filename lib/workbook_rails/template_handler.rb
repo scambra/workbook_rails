@@ -15,10 +15,10 @@ module WorkbookRails
       end
     end
 
-    def self.call(template)
+    def self.call(template, source = nil)
       "workbook = Workbook::Book.new;\n" +
-      template.source +
-      ";\nWorkbookRails::TemplateHandler.workbook_to_string(workbook, lookup_context.rendered_format);"
+        (source || template.source) +
+        ";\nWorkbookRails::TemplateHandler.workbook_to_string(workbook, lookup_context.rendered_format);"
     end
 
   end
