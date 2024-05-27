@@ -1,12 +1,12 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
 
 # Declare your gem's dependencies in axlsx_rails.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec path: '..'
 
-gem 'rails', "~> 5.0.0"
-gem 'responders', '~> 2.0'
+gem 'rails', "~> 7.1.0"
+gem 'responders', '~> 3.0'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -19,4 +19,7 @@ group :test do
   gem 'capybara', '~> 2.1'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: false
+  gem "rspec-rails"
+  gem "sqlite3", '~> 1.4'
+  gem "coveralls"
 end

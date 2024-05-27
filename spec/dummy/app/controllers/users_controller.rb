@@ -11,6 +11,6 @@ class UsersController < ApplicationController
   def send_instructions
     @user = User.find(params[:user_id])
     @user.send_instructions
-    render (Rails.version < '5.0' ? :text : :plain) => "Email sent"
+    render plain: "Email sent"
   end
 end

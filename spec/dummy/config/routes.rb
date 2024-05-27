@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   get "/withpartial(.:format)", :to => "home#withpartial", :as => :withpartial
   get "/home/render_elsewhere(.:format)", :to => "home#render_elsewhere"
   get "/render_elsewhere(.:format)", :to => "home#render_elsewhere"
-  get "/render_file_path(.:format)", :to => "home#render_file_path"
   root to: "home#index"
 end

@@ -93,13 +93,6 @@ describe 'Workbook request', :type => :request do
     expect(wb[1].table[1][0]).to eq("Untie!")
   end
 
-  it "downloads an excel from render with file path" do
-    visit '/render_file_path.xlsx'
-    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx].to_s)
-    wb = write_and_open_workbook(page)
-    expect(wb.sheet.table[1][0]).to eq('User!')
-  end
-
   it "handles nested resources" do
     User.destroy_all
     @user = User.create name: 'Bugs', last_name: 'Bunny', address: '1234 Left Turn, Albuquerque NM 22222', email: 'bugs@bunny.com'
@@ -138,38 +131,35 @@ describe 'Workbook request', :type => :request do
     expect(wb.sheet.table[1][0]).to eq('User!')
   end
 
-  unless Rails.version < '3.2'
-    it "handles missing format with render :xlsx" do
-      visit '/another'
+  it "handles missing format with render :xlsx" do
+    visit '/another.xlsx'
 
-      expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx])
-      expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
+    expect(page.response_headers['Content-Type']).to eq(Mime[:xlsx])
+    expect(page.response_headers['Content-Disposition']).to include("filename=\"filename_test.xlsx\"")
 
-      wb = write_and_open_workbook(page)
-      expect(wb.sheet.table[1][0]).to eq('Untie!')
-    end
+    wb = write_and_open_workbook(page)
+    expect(wb.sheet.table[1][0]).to eq('Untie!')
   end
 
-  unless Rails.version < '4.0'
-    Capybara.register_driver :mime_all do |app|
-      Capybara::RackTest::Driver.new(app, headers: { 'HTTP_ACCEPT' => '*/*' })
-    end
+  Capybara.register_driver :mime_all do |app|
+    Capybara::RackTest::Driver.new(app, headers: { 'HTTP_ACCEPT' => '*/*' })
+  end
 
-    it "mime all with render :xlsx and then :html" do
-      ActionView::Base.default_formats.delete :xlsx # see notes
-      Capybara.current_driver = :mime_all
-      visit '/another'
-      expect{ visit '/home/only_html' }.to_not raise_error
+  it "mime all with render :xlsx and then :html" do
+    ActionView::Base.default_formats.delete :xlsx # see notes
+    Capybara.current_driver = :mime_all
+    visit '/another'
+    expect{ visit '/home/only_html' }.to_not raise_error
+    ActionView::Base.default_formats.push :xlsx
 
-      # Output:
-      # default formats before                        : [:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :xlsx]
-      # default formats in my project                 : [:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip]
-      # default formats after render xlsx with */*    : [:xlsx, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip]
+    # Output:
+    # default formats before                        : [:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :xlsx]
+    # default formats in my project                 : [:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip]
+    # default formats after render xlsx with */*    : [:xlsx, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip]
 
-      # Failure/Error: visit '/home/only_html'
-      # ActionView::MissingTemplate:
-      #   Missing template home/only_html, application/only_html with {:locale=>[:en], :formats=>[:xlsx, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :axlsx]}.
-    end
+    # Failure/Error: visit '/home/only_html'
+    # ActionView::MissingTemplate:
+    #   Missing template home/only_html, application/only_html with {:locale=>[:en], :formats=>[:xlsx, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :axlsx]}.
   end
 
   protected

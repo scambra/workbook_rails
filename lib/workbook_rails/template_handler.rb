@@ -18,7 +18,7 @@ module WorkbookRails
     def self.call(template, source = nil)
       "workbook = Workbook::Book.new;\n" +
         (source || template.source) +
-        ";\nWorkbookRails::TemplateHandler.workbook_to_string(workbook, lookup_context.rendered_format);"
+        ";\nWorkbookRails::TemplateHandler.workbook_to_string(workbook, lookup_context.formats.last);"
     end
 
   end

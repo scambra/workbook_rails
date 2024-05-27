@@ -1,8 +1,10 @@
 require 'coveralls'
 require 'simplecov'
 Coveralls.wear!
-SimpleCov.start do
-  add_filter '/spec/'
+unless SimpleCov.running
+  SimpleCov.start do
+    add_filter '/spec/'
+  end
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

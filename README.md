@@ -21,7 +21,7 @@ gem 'workbook_rails'
 
 ## Requirements
 
-* Rails 3.2, 4.0, 4.1, 4.2 or 5.0 (tested)
+* Rails 6.0 to 7.1 (tested)
 * **Workbook 0.4.16 requires Axlsx 2.0.1, which requires rubyzip 1.0.0**
 * You must use `render_to_string` to render a mail attachment.
 
@@ -120,12 +120,6 @@ If you use `render xlsx:` the gem will try to guess the file name:
 render xlsx: 'buttons'
 # filename of 'latest_buttons'
 render xlsx: 'latest_buttons', template: 'featured/latest'
-```
-
-If that fails, pass the `:filename` parameter:
-
-```ruby
-render xlsx: "action_or_template", filename: "my_new_filename.xlsx"
 ```
 
 ### Partials
