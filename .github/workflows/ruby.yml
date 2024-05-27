@@ -47,7 +47,7 @@ jobs:
             rails: "6.0"
     env:
       BUNDLE_GEMFILE: gemfiles/Gemfile-${{ matrix.rails }}
-      RAILS_ENV=test
+      RAILS_ENV: test
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
