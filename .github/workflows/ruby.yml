@@ -55,6 +55,6 @@ jobs:
         rubygems: latest
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Setup DB
-      run: cd spec/dummy && bundle exec rake db:create && bundle exec rake db:migrate && cd ../..
+      run: cd spec/dummy && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:create && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:migrate && cd ../..
     - name: Run tests
       run: bundle exec codeclimate-test-reporter
