@@ -55,3 +55,5 @@ jobs:
       run: cd spec/dummy && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:create && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:migrate && cd ../..
     - name: Run tests
       run: bundle exec codeclimate-test-reporter
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v2.3.0

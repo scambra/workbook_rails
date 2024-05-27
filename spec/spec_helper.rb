@@ -1,8 +1,10 @@
-require 'coveralls'
 require 'simplecov'
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+require 'simplecov-lcov'
+
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 SimpleCov.start do
-  add_filter '/spec/'
+  add_filter "/spec/"
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
