@@ -7,7 +7,7 @@ gemspec path: '..'
 
 gem 'rails', "~> 6.1.0"
 gem 'responders', '~> 3.0'
-gem 'workbook', '0.8.1' # 0.8.2 doesn't work with ruby 2.6
+gem 'workbook'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -21,6 +21,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'simplecov_json_formatter'
   gem "rspec-rails"
-  gem "sqlite3"
+  gem "sqlite3", '~> 1.4'
   gem "coveralls_reborn", require: false
 end
