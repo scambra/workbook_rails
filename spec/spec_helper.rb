@@ -1,6 +1,9 @@
 require 'coveralls'
 require 'simplecov'
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.formatters = [
+  SimpleCov::Formatter::JSONFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 SimpleCov.start do
   add_filter '/spec/'
 end

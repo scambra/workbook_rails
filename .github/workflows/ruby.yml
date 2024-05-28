@@ -56,6 +56,6 @@ jobs:
     - name: Run tests
       run: bundle exec rake
     - name: Codeclimate report
+      uses: paambaati/codeclimate-action@v6.0.0
       env:
-        CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-      run: bundle exec codeclimate-test-reporter
+        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}

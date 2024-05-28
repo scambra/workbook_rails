@@ -79,8 +79,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
-    codeclimate-test-reporter (1.0.7)
-      simplecov
     concurrent-ruby (1.2.3)
     coveralls_reborn (0.28.0)
       simplecov (~> 0.22.0)
@@ -230,13 +228,13 @@ PLATFORMS
 DEPENDENCIES
   bundler
   capybara (~> 2.1)
-  codeclimate-test-reporter
   coveralls_reborn
   rails (~> 6.0.0)
   rake
   responders (~> 3.0)
   rspec-rails
   simplecov
+  simplecov_json_formatter
   sqlite3
   workbook (= 0.8.1)
   workbook_rails!
