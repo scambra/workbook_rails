@@ -4,7 +4,8 @@ Workbook-Rails &mdash; Workbook templates for Rails views
 [![Gem
 Version](https://badge.fury.io/rb/workbook_rails.svg)](http://badge.fury.io/rb/workbook_rails)
 [![Build Status](https://github.com/scambra/workbook_rails/actions/workflows/ruby.yml/badge.svg)](https://github.com/scambra/workbook_rails/actions/workflows/ruby.yml)
-[Code quality and coverage on Qlty](https://qlty.sh/gh/scambra/projects/workbook_rails)
+[![Maintainability](https://qlty.sh/gh/scambra/projects/workbook_rails/maintainability.svg)](https://qlty.sh/gh/scambra/projects/workbook_rails)
+[![Code Coverage](https://qlty.sh/gh/scambra/projects/workbook_rails/coverage.svg)](https://qlty.sh/gh/scambra/projects/workbook_rails)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
