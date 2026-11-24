@@ -15,8 +15,9 @@
 #
 WorkbookRails::FORMATS.each do |format|
   ActionController::Renderers.add format do |filename, options|
-    if options[:template] == action_name
+    if options[:template].nil? || options[:template] == action_name
       options[:template] = filename.gsub(/^.*\//,'')
+      options[:prefixes] ||= [controller_path]
     end
 
     # disposition / filename
