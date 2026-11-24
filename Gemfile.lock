@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     workbook_rails (0.2.0)
-      actionpack (>= 3.2)
+      actionpack (>= 7.2)
       workbook (>= 0.4.10)
 
 GEM

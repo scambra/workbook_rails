@@ -7,6 +7,7 @@ require "workbook_rails/version"
 Gem::Specification.new do |s|
   s.name        = "workbook_rails"
   s.version     = WorkbookRails::VERSION
+  s.required_ruby_version = ">= 3.2"
   s.authors     = ["Noel Peden"]
   s.email       = ["noel@peden.biz"]
   s.homepage    = "https://github.com/Programatica/workbook_rails"
@@ -16,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + Dir['[A-Z]*']
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "actionpack", ">= 3.2"
+  s.add_dependency "actionpack", ">= 7.2"
   s.add_dependency "workbook", ">= 0.4.10"
 
   s.add_development_dependency "bundler"

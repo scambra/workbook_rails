@@ -1,4 +1,4 @@
-spec/test_3.2.sh
-spec/test_4.0.sh
-spec/test_4.1.sh
-spec/test_4.2.sh
+set -e
+
+spec/test_7.2.sh
+spec/test_8.1.sh
