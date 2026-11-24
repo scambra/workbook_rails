@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'Workbook request', type: :request do
+describe 'Workbook request', type: :request do # rubocop:disable Metrics/BlockLength
   it 'has a working dummy app' do
     @user1 = User.create name: 'Elmer', last_name: 'Fudd', address: '1234 Somewhere, Over NY 11111',
                          email: 'elmer@fudd.com'

@@ -1,0 +1,8 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Security/Eval:
+  # This spec evaluates generated template code from a literal fixture.
+  Exclude:
+    - 'spec/template_handler_spec.rb'
