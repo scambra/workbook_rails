@@ -29,7 +29,9 @@ jobs:
       BUNDLE_GEMFILE: gemfiles/Gemfile-${{ matrix.rails }}
       RAILS_ENV: test
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7.0.1
+      with:
+        persist-credentials: false
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
@@ -39,7 +41,35 @@ jobs:
       run: cd spec/dummy && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:create && BUNDLE_GEMFILE=../../$BUNDLE_GEMFILE bundle exec rake db:migrate && cd ../..
     - name: Run tests
       run: bundle exec rake
-    - name: Codeclimate report
-      uses: paambaati/codeclimate-action@v6.0.0
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+    - name: Save coverage report
+      if: ${{ !cancelled() && hashFiles('coverage/coverage.json') != '' }}
+      uses: actions/upload-artifact@v7.0.2
+      with:
+        name: coverage-ruby-${{ matrix.ruby }}-rails-${{ matrix.rails }}
+        path: coverage/coverage.json
+        if-no-files-found: error
+        retention-days: 1
+
+  coverage:
+    needs: test
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+    - uses: actions/checkout@v7.0.1
+      with:
+        persist-credentials: false
+    - name: Download coverage reports
+      uses: actions/download-artifact@v8.0.2
+      with:
+        pattern: coverage-*
+        path: coverage
+    - name: Report coverage to Qlty
+      uses: qltysh/qlty-action/coverage@v2
+      with:
+        oidc: true
+        files: coverage/**/coverage.json
+        format: simplecov
+        skip-errors: false

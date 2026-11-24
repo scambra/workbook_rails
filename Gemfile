@@ -17,9 +17,8 @@ gem 'responders', '~> 3.0'
 # gem 'pry-debugger'
 group :test do
   gem 'capybara', '~> 2.1'
-  gem 'simplecov', require: false
-  gem 'codeclimate-test-reporter', require: false
+  gem 'simplecov', '>= 0.22', require: false
+  gem 'simplecov_json_formatter'
   gem "rspec-rails"
   gem "sqlite3"
-  gem "coveralls"
 end
