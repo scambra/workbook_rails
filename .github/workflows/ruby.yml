@@ -67,6 +67,7 @@ jobs:
         pattern: coverage-*
         path: coverage
     - name: Report coverage to Qlty
+      if: ${{ hashFiles('coverage/**/coverage.json') != '' }}
       uses: qltysh/qlty-action/coverage@v2
       with:
         oidc: true

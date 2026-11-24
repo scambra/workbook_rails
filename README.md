@@ -4,8 +4,7 @@ Workbook-Rails &mdash; Workbook templates for Rails views
 [![Gem
 Version](https://badge.fury.io/rb/workbook_rails.svg)](http://badge.fury.io/rb/workbook_rails)
 [![Build Status](https://github.com/scambra/workbook_rails/actions/workflows/ruby.yml/badge.svg)](https://github.com/scambra/workbook_rails/actions/workflows/ruby.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/99cc4757969d308f258c/maintainability)](https://codeclimate.com/github/scambra/workbook_rails/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/scambra/workbook_rails/badge.svg?branch=master)](https://coveralls.io/github/scambra/workbook_rails?branch=master)
+[Code quality and coverage on Qlty](https://qlty.sh/gh/scambra/projects/workbook_rails)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -19,7 +18,8 @@ gem 'workbook_rails'
 
 ## Requirements
 
-* Rails 6.0 to 7.1 (tested)
+* Ruby 3.2 or newer
+* Rails >= 7.2 and <= 8.1 (tested)
 * **Workbook 0.4.16 requires Axlsx 2.0.1, which requires rubyzip 1.0.0**
 * You must use `render_to_string` to render a mail attachment.
 
