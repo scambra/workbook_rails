@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'workbook'
 require 'workbook_rails/template_handler'
 
@@ -14,11 +16,9 @@ module WorkbookRails
         require 'workbook_rails/action_controller'
 
         unless Mime[:xlsx]
-          Mime::Type.register "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", :xlsx
+          Mime::Type.register 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', :xlsx
         end
-        unless Mime[:xls]
-          Mime::Type.register "application/vnd.ms-excel", :xls
-        end
+        Mime::Type.register 'application/vnd.ms-excel', :xls unless Mime[:xls]
       end
     end
   end

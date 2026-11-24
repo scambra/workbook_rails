@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUsers < (Rails.version < '5.1' ? ActiveRecord::Migration : ActiveRecord::Migration[5.0])
   def change
     create_table :users do |t|

@@ -1,4 +1,6 @@
-#Rails.application.configure do
+# frozen_string_literal: true
+
+# Rails.application.configure do
 Dummy::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -15,9 +17,9 @@ Dummy::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance.
   if config.respond_to? :serve_static_files
-    config.serve_static_files  = true
+    config.serve_static_files = true
   else
-    config.serve_static_assets  = true
+    config.serve_static_assets = true
   end
   config.static_cache_control = 'public, max-age=3600'
 

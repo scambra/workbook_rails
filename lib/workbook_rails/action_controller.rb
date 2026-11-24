@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # You can always specify a template:
 #
@@ -16,7 +18,7 @@
 WorkbookRails::FORMATS.each do |format|
   ActionController::Renderers.add format do |filename, options|
     if options[:template].nil? || options[:template] == action_name
-      options[:template] = filename.gsub(/^.*\//,'')
+      options[:template] = filename.gsub(%r{^.*/}, '')
       options[:prefixes] ||= [controller_path]
     end
 
@@ -25,7 +27,7 @@ WorkbookRails::FORMATS.each do |format|
     if (file_name = options.delete(:filename))
       file_name += ".#{format}" unless file_name =~ /\.#{format}$/
     else
-      file_name = "#{filename.gsub(/^.*\//,'')}.#{format}"
+      file_name = "#{filename.gsub(%r{^.*/}, '')}.#{format}"
     end
 
     options = options.merge(layout: false)
@@ -35,13 +37,15 @@ end
 
 # For respond_to default
 if ActionController.const_defined? 'Responder'
-  class ActionController::Responder
-    WorkbookRails::FORMATS.each do |format|
-      define_method "to_#{format}" do
-        if @default_response
-          @default_response.call(options)
-        else
-          controller.render options.reverse_merge(format => controller.action_name)
+  module ActionController
+    class Responder
+      WorkbookRails::FORMATS.each do |format|
+        define_method "to_#{format}" do
+          if @default_response
+            @default_response.call(options)
+          else
+            controller.render options.reverse_merge(format => controller.action_name)
+          end
         end
       end
     end

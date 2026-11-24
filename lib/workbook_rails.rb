@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 require 'workbook_rails/engine'
 module WorkbookRails
-  FORMATS = [:xlsx, :xls, :csv]
+  FORMATS = %i[xlsx xls csv].freeze
 end
-

@@ -1,11 +1,13 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in axlsx_rails.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'rails', "~> 8.1.0"
+gem 'rails', '~> 8.1.0'
 gem 'responders', '~> 3.0'
 
 # Declare any dependencies that are still in development here instead of in
@@ -17,8 +19,8 @@ gem 'responders', '~> 3.0'
 # gem 'pry-debugger'
 group :test do
   gem 'capybara', '~> 2.1'
+  gem 'rspec-rails'
   gem 'simplecov', '>= 0.22', require: false
   gem 'simplecov_json_formatter'
-  gem "rspec-rails"
-  gem "sqlite3"
+  gem 'sqlite3'
 end

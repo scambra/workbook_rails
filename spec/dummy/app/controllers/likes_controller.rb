@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   # GET /likes
   # GET /likes.json
@@ -13,6 +15,6 @@ class LikesController < ApplicationController
 
   def render_elsewhere
     @user = User.find(params[:user_id])
-    render :xlsx => "index", :template => 'users/respond_with'
+    render xlsx: 'index', template: 'users/respond_with'
   end
 end
