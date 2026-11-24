@@ -20,8 +20,8 @@ describe WorkbookRails::TemplateHandler do
 
     it 'compiles to an excel spreadsheet' do
       workbook, wb = nil
-      double(formats: [:xlsx])
-      eval TH.call(template, template.source)
+      lookup_context = double(formats: [:xlsx])
+      eval described_class.call(template, template.source), binding
       workbook.write_to_xlsx('/tmp/wb_temp.xlsx')
       expect { wb = Workbook::Book.open('/tmp/wb_temp.xlsx') }.to_not raise_error
       expect(wb.sheet.table[1][2]).to eq('c')
