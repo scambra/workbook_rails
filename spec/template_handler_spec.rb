@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'Workbook template handler' do
-  TH = WorkbookRails::TemplateHandler
-  VT = Struct.new(:source)
-
-  let(:handler) { TH.new }
+describe WorkbookRails::TemplateHandler do
+  let(:handler) { described_class.new }
 
   let(:template) do
-    VT.new("workbook.sheet.table = Workbook::Table.new([['one', 'two', 'three'],['a', 'b', 'c']])")
+    Struct.new(:source).new("workbook.sheet.table = Workbook::Table.new([['one', 'two', 'three'],['a', 'b', 'c']])")
   end
 
   context "Rails #{Rails.version}" do

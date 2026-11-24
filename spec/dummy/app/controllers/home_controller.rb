@@ -28,10 +28,8 @@ class HomeController < ApplicationController
 
   def render_elsewhere
     case params[:type]
-    when '1'
-      render xlsx: 'home/index', template: 'users/respond_with'
-    when '2'
-      render xlsx: 'users/respond_with', template: 'users/respond_with'
+    when '1', '2'
+      render xlsx: params[:type] == '1' ? 'home/index' : 'users/respond_with', template: 'users/respond_with'
     when '3'
       render template: 'users/respond_with'
     when '4'
