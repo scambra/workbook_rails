@@ -21,9 +21,10 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ['3.2', '3.3', '3.4', '4.0']
-        rails: ['7.2', '8.1']
+        rails: ['7.2', '8.0', '8.1']
     env:
       BUNDLE_GEMFILE: gemfiles/Gemfile-${{ matrix.rails }}
       RAILS_ENV: test
