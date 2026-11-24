@@ -30,7 +30,6 @@ describe 'Workbook template handler' do
       expect(wb.sheet.table[1][2]).to eq('c')
     end
 
-    # TODO:
-    # Test if author field is set - does roo parse that?
+    # TODO: Test if author field is set - does roo parse that?
   end
 end
