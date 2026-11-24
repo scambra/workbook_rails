@@ -4,6 +4,7 @@ require 'workbook'
 require 'workbook_rails/template_handler'
 
 module WorkbookRails
+  # Registers the workbook template handler, renderers, and MIME types with Rails.
   class Engine < Rails::Engine
     initializer 'workbook_rails.action_view' do
       ActiveSupport.on_load :action_view do

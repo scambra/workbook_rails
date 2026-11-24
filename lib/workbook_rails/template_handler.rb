@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module WorkbookRails
+  # Compiles .wb templates into Ruby that builds and serializes a workbook.
   class TemplateHandler
     class_attribute :default_format
     self.default_format = :xlsx

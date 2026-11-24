@@ -38,6 +38,7 @@ end
 # For respond_to default
 if ActionController.const_defined? 'Responder'
   module ActionController
+    # Adds workbook format responses to an existing ActionController responder.
     class Responder
       WorkbookRails::FORMATS.each do |format|
         define_method "to_#{format}" do
